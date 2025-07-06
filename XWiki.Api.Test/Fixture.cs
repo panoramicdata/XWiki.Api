@@ -1,6 +1,6 @@
-﻿
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Xunit.Microsoft.DependencyInjection;
 using Xunit.Microsoft.DependencyInjection.Abstracts;
 
@@ -22,6 +22,13 @@ public class Fixture : TestBedFixture
 		services
 			.AddScoped<CancellationTokenSource>()
 			.Configure<TestConfig>(_configuration.GetSection("Config"));
+
+		// Add logging with Debug level and providers for Console and Debug output
+		services.AddLogging(builder =>
+		{
+			builder.SetMinimumLevel(LogLevel.Debug);
+			builder.AddDebug();
+		});
 	}
 
 	protected override ValueTask DisposeAsyncCore()

@@ -31,7 +31,6 @@ public abstract class TestWithOutput : TestBed<Fixture>
 		XWikiClient = new XWikiClient(new XWikiClientOptions
 		{
 			Uri = testPortalConfig.Uri,
-			WikiName = testPortalConfig.WikiName,
 			Username = testPortalConfig.Username,
 			Password = testPortalConfig.Password,
 			Logger = Logger

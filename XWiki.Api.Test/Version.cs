@@ -8,7 +8,14 @@ public class Version(ITestOutputHelper testOutputHelper, Fixture fixture) : Test
 	[Fact]
 	public async Task GetVersion_Succeeds()
 	{
-		var result = await XWikiClient.Version.GetAsync(default);
+		var result = await XWikiClient
+			.ServerInfo
+			.GetAsync(default);
+
 		result.Should().NotBeNull();
+		result.Links.Should().NotBeNull();
+		result.Links.Should().NotBeEmpty();
+		result.Version.Should().NotBeNullOrEmpty();
+		result.Version.Should().NotBe("0.0.0");
 	}
 }

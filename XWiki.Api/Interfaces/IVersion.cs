@@ -10,5 +10,5 @@ public interface IVersion
 	/// </summary>
 	/// <returns>A string representing the version of the XWiki instance.</returns>
 	[Get("/")]
-	public Task<VersionInformation> GetAsync(CancellationToken cancellationToken);
+	public Task<ServerInformation> GetAsync(CancellationToken cancellationToken);
 }

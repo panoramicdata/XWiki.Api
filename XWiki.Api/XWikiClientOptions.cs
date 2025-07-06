@@ -16,11 +16,6 @@ public class XWikiClientOptions
 	public required Uri Uri { get; init; }
 
 	/// <summary>
-	/// Gets the name of the wiki associated with this instance.
-	/// </summary>
-	public string WikiName { get; init; } = "xwiki";
-
-	/// <summary>
 	/// The logger to be used for logging within the XWiki client.`
 	///	</summary>
 	public ILogger? Logger { get; init; } = null!;
@@ -34,4 +29,9 @@ public class XWikiClientOptions
 	/// Gets the password associated with the current user.  Leave it null if no authentication is required.
 	/// </summary>
 	public string? Password { get; init; }
+
+	/// <summary>
+	/// Gets the user agent string used to identify the application in HTTP requests.
+	/// </summary>
+	public string UserAgent { get; init; } = "XWiki.Api/1.0.0";
 }

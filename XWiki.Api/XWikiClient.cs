@@ -1,5 +1,7 @@
 ﻿
 using Refit;
+using System.Net.Http.Headers;
+using System.Text;
 using XWiki.Api.Interfaces;
 
 namespace XWiki.Api;
@@ -21,24 +23,34 @@ public class XWikiClient : IDisposable
 		// So for example , if the XWiki instance is hosted at https://xwiki.example.com/xwiki,the base address should be set to https://xwiki.example.com/xwiki/
 
 		// Set base address for the HttpClient to this combined path.
-		var baseAddress = new Uri(xWikiClientOptions.Uri.ToString().TrimEnd('/') + '/' + xWikiClientOptions.WikiName + "/rest");
+		var baseAddress = new Uri(xWikiClientOptions.Uri.ToString().TrimEnd('/') + "/rest");
 
-		var httpMessageHandler = new CustomHttpMessageHandler(xWikiClientOptions);
+		var httpMessageHandler = new LoggingHttpClientHandler(xWikiClientOptions);
 
 		_httpClient = new HttpClient(httpMessageHandler)
 		{
 			BaseAddress = baseAddress
 		};
 
+		_httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+		_httpClient.DefaultRequestHeaders.Add("User-Agent", xWikiClientOptions.UserAgent);
+
+		// Add authentication headers if username and password are provided
+		if (!string.IsNullOrEmpty(xWikiClientOptions.Username) && !string.IsNullOrEmpty(xWikiClientOptions.Password))
+		{
+			var byteArray = Encoding.ASCII.GetBytes($"{xWikiClientOptions.Username}:{xWikiClientOptions.Password}");
+			_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+		}
+
 		var refitSettings = new RefitSettings
 		{
 			ContentSerializer = new SystemTextJsonContentSerializer()
 		};
 
-		Version = RestService.For<IVersion>(_httpClient, refitSettings);
+		ServerInfo = RestService.For<IVersion>(_httpClient, refitSettings);
 	}
 
-	public IVersion Version { get; init; }
+	public IVersion ServerInfo { get; init; }
 
 
 	protected virtual void Dispose(bool disposing)

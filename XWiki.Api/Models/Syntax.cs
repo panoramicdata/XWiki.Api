@@ -1,5 +1,5 @@
 ﻿namespace XWiki.Api.Models;
 
-public class VersionInformation
+public class Syntax
 {
 }
