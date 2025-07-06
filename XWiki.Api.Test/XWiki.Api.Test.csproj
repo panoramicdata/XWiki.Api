@@ -6,7 +6,6 @@
 		<IsPackable>false</IsPackable>
 		<Nullable>enable</Nullable>
 		<AnalysisMode>All</AnalysisMode>
-		<Platforms>x64</Platforms>
 		<UserSecretsId>44736e7a-d160-4965-b8d9-978789f22cb8</UserSecretsId>
 	</PropertyGroup>
 
@@ -27,8 +26,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.6" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.6" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.6" />
-		<PackageReference Include="xunit" Version="2.9.3" />
-		<PackageReference Include="Xunit.Microsoft.DependencyInjection" Version="9.0.5" />
+		<PackageReference Include="Xunit.Microsoft.DependencyInjection" Version="9.0.6" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.10" />
 		<PackageReference Include="xunit.analyzers" Version="1.22.0">
@@ -39,6 +37,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="xunit.v3" Version="2.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,6 +1,8 @@
-﻿namespace XWiki.Api.Test;
+﻿using System;
 
-public class TestConfig
+namespace XWiki.Api.Test;
+
+internal class TestConfig
 {
 	/// <summary>
 	/// Gets or sets the URI of the XWiki instance.

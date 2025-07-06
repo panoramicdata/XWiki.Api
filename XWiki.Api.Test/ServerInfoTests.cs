@@ -1,9 +1,9 @@
 ﻿using AwesomeAssertions;
-using Xunit.Abstractions;
+using System.Threading.Tasks;
 
 namespace XWiki.Api.Test;
 
-public class Version(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
+public class ServerInfoTests(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
 {
 	[Fact]
 	public async Task GetVersion_Succeeds()

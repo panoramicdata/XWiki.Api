@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Xunit.Abstractions;
+using System;
 using Xunit.Microsoft.DependencyInjection.Abstracts;
 
 namespace XWiki.Api.Test;
@@ -12,7 +13,7 @@ public abstract class TestWithOutput : TestBed<Fixture>
 
 	protected XWikiClient XWikiClient { get; }
 
-	public TestWithOutput(ITestOutputHelper testOutputHelper, Fixture fixture) : base(testOutputHelper, fixture)
+	protected TestWithOutput(ITestOutputHelper testOutputHelper, Fixture fixture) : base(testOutputHelper, fixture)
 	{
 		ArgumentNullException.ThrowIfNull(testOutputHelper);
 		ArgumentNullException.ThrowIfNull(fixture);
