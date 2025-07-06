@@ -1,9 +1,8 @@
-﻿namespace XWiki.Api.Models;
+namespace XWiki.Api.Models;
 
-public class Syntax
+public class Wiki
 {
     public required string Id { get; init; }
     public required string Name { get; init; }
-    public required string Version { get; init; }
     public required Link[] Links { get; init; }
 }

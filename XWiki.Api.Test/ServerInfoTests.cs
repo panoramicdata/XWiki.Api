@@ -10,7 +10,7 @@ public class ServerInfoTests(ITestOutputHelper testOutputHelper, Fixture fixture
 	{
 		var result = await XWikiClient
 			.ServerInfo
-			.GetAsync(default);
+			.GetAsync(CancellationToken);
 
 		result.Should().NotBeNull();
 		result.Links.Should().NotBeNull();

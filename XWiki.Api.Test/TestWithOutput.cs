@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
+using System.Threading;
 using Xunit.Microsoft.DependencyInjection.Abstracts;
 
 namespace XWiki.Api.Test;
@@ -12,6 +13,8 @@ public abstract class TestWithOutput : TestBed<Fixture>
 	protected ILogger Logger { get; }
 
 	protected XWikiClient XWikiClient { get; }
+
+	protected static CancellationToken CancellationToken => TestContext.Current.CancellationToken;
 
 	protected TestWithOutput(ITestOutputHelper testOutputHelper, Fixture fixture) : base(testOutputHelper, fixture)
 	{

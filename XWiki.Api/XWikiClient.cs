@@ -1,5 +1,4 @@
-﻿
-using Refit;
+﻿using Refit;
 using System.Net.Http.Headers;
 using System.Text;
 using XWiki.Api.Interfaces;
@@ -52,6 +51,9 @@ public class XWikiClient : IDisposable
 
 	public IVersion ServerInfo { get; init; }
 
+	public IWikis GetWikisApi() => RestService.For<IWikis>(_httpClient);
+	public ISpaces GetSpacesApi() => RestService.For<ISpaces>(_httpClient);
+	public IPages GetPagesApi() => RestService.For<IPages>(_httpClient);
 
 	protected virtual void Dispose(bool disposing)
 	{
