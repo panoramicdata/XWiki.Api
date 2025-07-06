@@ -2,9 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
 		<IsPackable>false</IsPackable>
+		<Nullable>enable</Nullable>
+		<AnalysisMode>All</AnalysisMode>
+		<Platforms>x64</Platforms>
 		<UserSecretsId>44736e7a-d160-4965-b8d9-978789f22cb8</UserSecretsId>
 	</PropertyGroup>
 
