@@ -25,6 +25,11 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
+		<!-- Update the following before releasing to nuget -->
+		<PackageReleaseNotes>
+			Initial release of XWiki.Api, a .NET API for XWiki.
+		</PackageReleaseNotes>
+
 	</PropertyGroup>
 
 	<ItemGroup>
