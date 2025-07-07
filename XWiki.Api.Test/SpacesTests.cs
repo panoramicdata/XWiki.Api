@@ -10,8 +10,8 @@ public class SpacesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : 
 	[Fact]
 	public async Task GetSpaces_Succeeds()
 	{
-		var wikisApi = XWikiClient.GetWikisApi();
-		var spacesApi = XWikiClient.GetSpacesApi();
+		var wikisApi = XWikiClient.Wikis;
+		var spacesApi = XWikiClient.Spaces;
 		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
 		var firstWiki = wikis.Wikis.FirstOrDefault();
 		firstWiki.Should().NotBeNull();
@@ -25,8 +25,8 @@ public class SpacesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : 
 	[Fact]
 	public async Task GetSpace_Succeeds()
 	{
-		var wikisApi = XWikiClient.GetWikisApi();
-		var spacesApi = XWikiClient.GetSpacesApi();
+		var wikisApi = XWikiClient.Wikis;
+		var spacesApi = XWikiClient.Spaces;
 		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
 		var firstWiki = wikis.Wikis.FirstOrDefault();
 		firstWiki.Should().NotBeNull();

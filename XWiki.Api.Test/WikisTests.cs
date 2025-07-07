@@ -10,7 +10,7 @@ public class WikisTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 	[Fact]
 	public async Task GetWikis_Succeeds()
 	{
-		var wikisApi = XWikiClient.GetWikisApi();
+		var wikisApi = XWikiClient.Wikis;
 		var result = await wikisApi.GetWikisAsync(CancellationToken);
 
 		result.Should().NotBeNull();
@@ -21,7 +21,7 @@ public class WikisTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 	[Fact]
 	public async Task GetWiki_Succeeds()
 	{
-		var wikisApi = XWikiClient.GetWikisApi();
+		var wikisApi = XWikiClient.Wikis;
 		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
 		var firstWiki = wikis.Wikis.FirstOrDefault();
 		firstWiki.Should().NotBeNull();

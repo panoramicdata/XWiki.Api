@@ -11,9 +11,9 @@ public class PagesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 	[Fact]
 	public async Task GetPages_Succeeds()
 	{
-		var wikisApi = XWikiClient.GetWikisApi();
-		var spacesApi = XWikiClient.GetSpacesApi();
-		var pagesApi = XWikiClient.GetPagesApi();
+		var wikisApi = XWikiClient.Wikis;
+		var spacesApi = XWikiClient.Spaces;
+		var pagesApi = XWikiClient.Pages;
 		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
 		var firstWiki = wikis.Wikis.FirstOrDefault();
 		firstWiki.Should().NotBeNull();
@@ -30,9 +30,9 @@ public class PagesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 	[Fact]
 	public async Task GetPage_Succeeds()
 	{
-		var wikisApi = XWikiClient.GetWikisApi();
-		var spacesApi = XWikiClient.GetSpacesApi();
-		var pagesApi = XWikiClient.GetPagesApi();
+		var wikisApi = XWikiClient.Wikis;
+		var spacesApi = XWikiClient.Spaces;
+		var pagesApi = XWikiClient.Pages;
 		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
 		var firstWiki = wikis.Wikis.FirstOrDefault();
 		firstWiki.Should().NotBeNull();

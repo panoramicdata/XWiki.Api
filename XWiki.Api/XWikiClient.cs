@@ -47,13 +47,32 @@ public class XWikiClient : IDisposable
 		};
 
 		ServerInfo = RestService.For<IVersion>(_httpClient, refitSettings);
+		Wikis = RestService.For<IWikis>(_httpClient, refitSettings);
+		Spaces = RestService.For<ISpaces>(_httpClient, refitSettings);
+		Pages = RestService.For<IPages>(_httpClient, refitSettings);
+		Attachments = RestService.For<IAttachments>(_httpClient, refitSettings);
+		Objects = RestService.For<IObjects>(_httpClient, refitSettings);
+		Classes = RestService.For<IClasses>(_httpClient, refitSettings);
+		Comments = RestService.For<IComments>(_httpClient, refitSettings);
+		Tags = RestService.For<ITags>(_httpClient, refitSettings);
+		History = RestService.For<IHistory>(_httpClient, refitSettings);
+		Rendering = RestService.For<IRendering>(_httpClient, refitSettings);
+		Search = RestService.For<ISearch>(_httpClient, refitSettings);
 	}
 
 	public IVersion ServerInfo { get; init; }
 
-	public IWikis GetWikisApi() => RestService.For<IWikis>(_httpClient);
-	public ISpaces GetSpacesApi() => RestService.For<ISpaces>(_httpClient);
-	public IPages GetPagesApi() => RestService.For<IPages>(_httpClient);
+	public IWikis Wikis { get; }
+	public ISpaces Spaces { get; }
+	public IPages Pages { get; }
+	public IAttachments Attachments { get; }
+	public IObjects Objects { get; }
+	public IClasses Classes { get; }
+	public IComments Comments { get; }
+	public ITags Tags { get; }
+	public IHistory History { get; }
+	public IRendering Rendering { get; }
+	public ISearch Search { get; }
 
 	protected virtual void Dispose(bool disposing)
 	{
