@@ -8,6 +8,6 @@ public interface ISearch
 	/// <summary>
 	/// Searches the wiki.
 	/// </summary>
-	[Get("/search")]
-	Task<SearchResponse> SearchAsync([AliasAs("q")] string query, CancellationToken cancellationToken = default);
+	[Get("/wikis/{wikiName}/search")]
+	Task<SearchResponse> SearchAsync(string wikiName, [AliasAs("q")] string query, CancellationToken cancellationToken = default);
 }

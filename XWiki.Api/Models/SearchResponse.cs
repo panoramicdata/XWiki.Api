@@ -1,16 +1,12 @@
-namespace XWiki.Api.Models;
+using System.Text.Json.Serialization;
 
-public class SearchResult
-{
-	public required string Id { get; init; }
-	public required string Type { get; init; }
-	public required string Title { get; init; }
-	public required string Url { get; init; }
-	public required Link[] Links { get; init; }
-}
+namespace XWiki.Api.Models;
 
 public class SearchResponse
 {
+	[JsonPropertyName("searchResults")]
 	public required SearchResult[] Results { get; init; }
+
+	[JsonPropertyName("links")]
 	public required Link[] Links { get; init; }
 }
