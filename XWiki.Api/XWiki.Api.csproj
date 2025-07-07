@@ -3,7 +3,28 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<Authors>Panoramic Data Limited</Authors>
+		<PackageProjectUrl>https://github.com/panoramicdata/XWiki.Api/</PackageProjectUrl>
+		<Copyright>Copyright © Panoramic Data Limited 2025</Copyright>
+		<PackageIcon>Icon.png</PackageIcon>
+		<PackageTags>LogicMonitor API REST</PackageTags>
+		<Title>XWiki.Api</Title>
+		<Description>A .NET API for XWiki</Description>
+		<Summary>A .NET API for XWiki</Summary>
+		<Company>Panoramic Data Limited</Company>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<LangVersion>latest</LangVersion>
+		<AnalysisMode>All</AnalysisMode>
 		<Nullable>enable</Nullable>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/panoramicdata/XWiki.Api/</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<AnalysisLevel>latest-recommended</AnalysisLevel>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,5 +35,11 @@
 		</PackageReference>
 		<PackageReference Include="Refit" Version="8.0.0" />
 	</ItemGroup>
-
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="Icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
 </Project>
