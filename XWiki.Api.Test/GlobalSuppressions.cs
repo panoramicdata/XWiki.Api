@@ -12,3 +12,8 @@ using System.Diagnostics.CodeAnalysis;
 	Scope = "namespaceanddescendants",
 	Target = "~N:XWiki.Api.Test")
 ]
+[assembly: SuppressMessage(
+	"Style",
+	"IDE0058:Expression value is never used",
+	Justification = "AwesomeAssertions does this"
+)]

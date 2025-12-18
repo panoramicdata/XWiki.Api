@@ -2,6 +2,7 @@
 using XWiki.Api.Models;
 
 namespace XWiki.Api.Interfaces;
+
 public interface IVersion
 {
 

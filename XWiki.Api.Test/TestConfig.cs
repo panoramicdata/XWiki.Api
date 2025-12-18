@@ -2,12 +2,13 @@
 
 namespace XWiki.Api.Test;
 
-internal class TestConfig
+internal sealed class TestConfig
 {
 	/// <summary>
 	/// Gets or sets the URI of the XWiki instance.
 	/// </summary>
 	public required Uri Uri { get; init; }
+
 	/// <summary>
 	/// Gets or sets the name of the wiki associated with this instance.
 	/// </summary>

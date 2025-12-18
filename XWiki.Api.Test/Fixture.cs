@@ -24,16 +24,13 @@ public class Fixture : TestBedFixture
 			throw new InvalidOperationException("Configuration is null");
 		}
 
-		services
+		_ = services
 			.AddScoped<CancellationTokenSource>()
 			.Configure<TestConfig>(_configuration.GetSection("Config"));
 
 		// Add logging with Debug level and providers for Console and Debug output
-		services.AddLogging(builder =>
-		{
-			builder.SetMinimumLevel(LogLevel.Debug);
-			builder.AddDebug();
-		});
+		_ = services.AddLogging(builder => _ = builder.SetMinimumLevel(LogLevel.Debug)
+			.AddDebug());
 	}
 
 	protected override ValueTask DisposeAsyncCore()
