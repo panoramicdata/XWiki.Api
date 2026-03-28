@@ -1,6 +1,4 @@
 using AwesomeAssertions;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace XWiki.Api.Test;
 

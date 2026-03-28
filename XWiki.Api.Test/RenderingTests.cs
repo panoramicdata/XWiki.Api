@@ -1,5 +1,4 @@
 using AwesomeAssertions;
-using System.Threading.Tasks;
 using XWiki.Api.Models;
 
 namespace XWiki.Api.Test;

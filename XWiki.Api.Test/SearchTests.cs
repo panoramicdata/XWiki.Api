@@ -1,6 +1,4 @@
 using AwesomeAssertions;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 
 namespace XWiki.Api.Test;
 
@@ -11,8 +9,7 @@ public class SearchTests(ITestOutputHelper testOutputHelper, Fixture fixture) : 
 	public async Task Search_Succeeds()
 	{
 		// Get wiki name from config
-		var testConfig = fixture.GetService<IOptions<TestConfig>>(testOutputHelper)?.Value;
-		var wikiName = testConfig?.WikiName ?? "xwiki";
+		var wikiName = TestConfig.WikiName;
 
 		var searchApi = XWikiClient.Search;
 		var result = await searchApi.SearchAsync(wikiName, "XWiki", CancellationToken);

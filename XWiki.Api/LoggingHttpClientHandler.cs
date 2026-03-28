@@ -1,4 +1,4 @@
-﻿
+
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -16,7 +16,10 @@ internal sealed class LoggingHttpClientHandler : HttpClientHandler
 		_logger = xWikiClientOptions.Logger ?? NullLogger.Instance;
 
 		// Additional initialization can be done here if needed.
-		_logger.LogDebug("LoggingHttpClientHandler initialized with base URI: {BaseUri}", xWikiClientOptions.Uri);
+		if (_logger.IsEnabled(LogLevel.Debug))
+		{
+			_logger.LogDebug("LoggingHttpClientHandler initialized with base URI: {BaseUri}", xWikiClientOptions.Uri);
+		}
 	}
 
 	protected override async Task<HttpResponseMessage> SendAsync(
@@ -40,12 +43,18 @@ internal sealed class LoggingHttpClientHandler : HttpClientHandler
 		var response = await base.SendAsync(request, cancellationToken);
 
 		// Log the response status code
-		_logger.LogDebug("Received response with status code: {StatusCode}", response.StatusCode);
+		if (_logger.IsEnabled(LogLevel.Debug))
+		{
+			_logger.LogDebug("Received response with status code: {StatusCode}", response.StatusCode);
+		}
 
 		// Optionally, you can log the response content if needed
 		if (response.IsSuccessStatusCode)
 		{
-			_logger.LogDebug("Request to {RequestUri} succeeded with status code: {StatusCode}", request.RequestUri, response.StatusCode);
+			if (_logger.IsEnabled(LogLevel.Debug))
+			{
+				_logger.LogDebug("Request to {RequestUri} succeeded with status code: {StatusCode}", request.RequestUri, response.StatusCode);
+			}
 		}
 		else
 		{

@@ -1,5 +1,3 @@
-﻿using System;
-
 namespace XWiki.Api.Test;
 
 internal sealed class TestConfig
