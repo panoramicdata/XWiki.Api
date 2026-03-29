@@ -9,5 +9,5 @@ public interface ISearch
 	/// Searches the wiki.
 	/// </summary>
 	[Get("/wikis/{wikiName}/search")]
-	Task<SearchResponse> SearchAsync(string wikiName, [AliasAs("q")] string query, CancellationToken cancellationToken = default);
+	Task<SearchResponse> SearchAsync(string wikiName, [AliasAs("q")] string query, CancellationToken cancellationToken);
 }

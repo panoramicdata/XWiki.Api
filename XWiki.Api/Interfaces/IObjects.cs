@@ -9,11 +9,11 @@ public interface IObjects
 	/// Gets the list of objects for a page.
 	/// </summary>
 	[Get("/wikis/{wikiId}/spaces/{spaceKey}/pages/{pageName}/objects")]
-	Task<ObjectsResponse> GetObjectsAsync(string wikiId, string spaceKey, string pageName, CancellationToken cancellationToken = default);
+	Task<ObjectsResponse> GetObjectsAsync(string wikiId, string spaceKey, string pageName, CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Gets a specific object by class name and number.
 	/// </summary>
 	[Get("/wikis/{wikiId}/spaces/{spaceKey}/pages/{pageName}/objects/{className}/{objectNumber}")]
-	Task<XWikiObject> GetObjectAsync(string wikiId, string spaceKey, string pageName, string className, int objectNumber, CancellationToken cancellationToken = default);
+	Task<XWikiObject> GetObjectAsync(string wikiId, string spaceKey, string pageName, string className, int objectNumber, CancellationToken cancellationToken);
 }

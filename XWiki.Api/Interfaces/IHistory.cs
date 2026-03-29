@@ -9,5 +9,5 @@ public interface IHistory
 	/// Gets the history of a page.
 	/// </summary>
 	[Get("/wikis/{wikiId}/spaces/{spaceKey}/pages/{pageName}/history")]
-	Task<HistoryResponse> GetHistoryAsync(string wikiId, string spaceKey, string pageName, CancellationToken cancellationToken = default);
+	Task<HistoryResponse> GetHistoryAsync(string wikiId, string spaceKey, string pageName, CancellationToken cancellationToken);
 }

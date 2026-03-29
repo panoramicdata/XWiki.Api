@@ -40,9 +40,4 @@ public abstract class TestWithOutput : TestBed<Fixture>
 			Logger = Logger
 		});
 	}
-
-	protected override void Dispose(bool disposing)
-	{
-		base.Dispose(disposing);
-	}
 }

@@ -9,5 +9,5 @@ public interface IRendering
 	/// Renders content in a given syntax.
 	/// </summary>
 	[Post("/rendering")]
-	Task<RenderedContent> RenderAsync([Body] RenderRequest request, CancellationToken cancellationToken = default);
+	Task<RenderedContent> RenderAsync([Body] RenderRequest request, CancellationToken cancellationToken);
 }

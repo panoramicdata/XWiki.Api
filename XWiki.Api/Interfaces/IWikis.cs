@@ -9,11 +9,11 @@ public interface IWikis
 	/// Gets the list of wikis.
 	/// </summary>
 	[Get("/wikis")]
-	Task<WikisResponse> GetWikisAsync(CancellationToken cancellationToken = default);
+	Task<WikisResponse> GetWikisAsync(CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Gets a specific wiki by its id.
 	/// </summary>
 	[Get("/wikis/{wikiId}")]
-	Task<Wiki> GetWikiAsync(string wikiId, CancellationToken cancellationToken = default);
+	Task<Wiki> GetWikiAsync(string wikiId, CancellationToken cancellationToken);
 }

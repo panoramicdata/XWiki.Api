@@ -9,11 +9,11 @@ public interface IAttachments
 	/// Gets the list of attachments for a page.
 	/// </summary>
 	[Get("/wikis/{wikiId}/spaces/{spaceKey}/pages/{pageName}/attachments")]
-	Task<AttachmentsResponse> GetAttachmentsAsync(string wikiId, string spaceKey, string pageName, CancellationToken cancellationToken = default);
+	Task<AttachmentsResponse> GetAttachmentsAsync(string wikiId, string spaceKey, string pageName, CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Downloads a specific attachment.
 	/// </summary>
 	[Get("/wikis/{wikiId}/spaces/{spaceKey}/pages/{pageName}/attachments/{attachmentName}")]
-	Task<ApiResponse<Stream>> DownloadAttachmentAsync(string wikiId, string spaceKey, string pageName, string attachmentName, CancellationToken cancellationToken = default);
+	Task<ApiResponse<Stream>> DownloadAttachmentAsync(string wikiId, string spaceKey, string pageName, string attachmentName, CancellationToken cancellationToken);
 }

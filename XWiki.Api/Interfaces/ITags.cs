@@ -9,5 +9,5 @@ public interface ITags
 	/// Gets the list of tags for a page.
 	/// </summary>
 	[Get("/wikis/{wikiId}/spaces/{spaceKey}/pages/{pageName}/tags")]
-	Task<TagsResponse> GetTagsAsync(string wikiId, string spaceKey, string pageName, CancellationToken cancellationToken = default);
+	Task<TagsResponse> GetTagsAsync(string wikiId, string spaceKey, string pageName, CancellationToken cancellationToken);
 }
