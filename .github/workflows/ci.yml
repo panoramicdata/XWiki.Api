@@ -56,5 +56,16 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
+      - name: Get NuGet Trusted Publishing token
+        id: nuget-tp
+        run: |
+          OIDC_TOKEN=$(curl -sLS "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=api://NuGetTrustedPublishing" \
+            -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" | jq -r '.value')
+          API_KEY=$(curl -sLS "https://api.nuget.org/v3/trusted-publishing/token" \
+            -H "Content-Type: application/json" \
+            -d "{\"oidcToken\": \"${OIDC_TOKEN}\"}" | jq -r '.')
+          echo "::add-mask::${API_KEY}"
+          echo "api-key=${API_KEY}" >> "$GITHUB_OUTPUT"
+
       - name: Publish to NuGet (Trusted Publishing)
-        run: dotnet nuget push ./artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push ./artifacts/*.nupkg --api-key "${{ steps.nuget-tp.outputs.api-key }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
