@@ -42,8 +42,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
-    permissions:
-      id-token: write
 
     steps:
       - uses: actions/download-artifact@v4
@@ -56,27 +54,5 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Get NuGet Trusted Publishing token
-        id: nuget-tp
-        run: |
-          echo "Requesting OIDC token..."
-          OIDC_RESPONSE=$(curl -sLS "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=api://AzureADTokenExchange" \
-            -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}")
-          OIDC_TOKEN=$(echo "$OIDC_RESPONSE" | jq -r '.value')
-          if [ -z "$OIDC_TOKEN" ] || [ "$OIDC_TOKEN" = "null" ]; then
-            echo "::error::Failed to get OIDC token. Response: $OIDC_RESPONSE"
-            exit 1
-          fi
-          echo "OIDC token obtained. Exchanging for NuGet API key..."
-          API_KEY=$(curl -sLS -X POST "https://api.nuget.org/v3/trusted-publishing/token" \
-            -H "Content-Type: application/json" \
-            -d "{\"token\": \"${OIDC_TOKEN}\"}")
-          if [ -z "$API_KEY" ] || echo "$API_KEY" | jq -e . >/dev/null 2>&1; then
-            echo "::error::Failed to exchange token. Response: $API_KEY"
-            exit 1
-          fi
-          echo "::add-mask::${API_KEY}"
-          echo "api-key=${API_KEY}" >> "$GITHUB_OUTPUT"
-
-      - name: Publish to NuGet (Trusted Publishing)
-        run: dotnet nuget push ./artifacts/*.nupkg --api-key "${{ steps.nuget-tp.outputs.api-key }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: Publish to NuGet
+        run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
