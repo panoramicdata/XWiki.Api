@@ -2,9 +2,15 @@ using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
+/// <summary>
+/// Represents a WikisTests.
+/// </summary>
 [Collection("Dependency Injection")]
 public class WikisTests(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
 {
+	/// <summary>
+	/// Executes GetWikis_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetWikis_Succeeds()
 	{
@@ -16,6 +22,9 @@ public class WikisTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 		result.Links.Should().NotBeNull();
 	}
 
+	/// <summary>
+	/// Executes GetWiki_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetWiki_Succeeds()
 	{
@@ -29,3 +38,4 @@ public class WikisTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 		wiki.Id.Should().Be(firstWiki.Id);
 	}
 }
+

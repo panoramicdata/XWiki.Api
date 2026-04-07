@@ -2,9 +2,15 @@ using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
+/// <summary>
+/// Represents a SpacesTests.
+/// </summary>
 [Collection("Dependency Injection")]
 public class SpacesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
 {
+	/// <summary>
+	/// Executes GetSpaces_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetSpaces_Succeeds()
 	{
@@ -20,6 +26,9 @@ public class SpacesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : 
 		result.Links.Should().NotBeNull();
 	}
 
+	/// <summary>
+	/// Executes GetSpace_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetSpace_Succeeds()
 	{
@@ -36,3 +45,4 @@ public class SpacesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : 
 		space.Should().NotBeNull();
 	}
 }
+

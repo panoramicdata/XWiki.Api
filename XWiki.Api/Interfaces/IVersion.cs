@@ -1,8 +1,11 @@
-﻿using Refit;
+using Refit;
 using XWiki.Api.Models;
 
 namespace XWiki.Api.Interfaces;
 
+/// <summary>
+/// Represents a IVersion.
+/// </summary>
 public interface IVersion
 {
 

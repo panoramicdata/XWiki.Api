@@ -3,6 +3,9 @@ using XWiki.Api.Models;
 
 namespace XWiki.Api.Interfaces;
 
+/// <summary>
+/// Represents a ITags.
+/// </summary>
 public interface ITags
 {
 	/// <summary>

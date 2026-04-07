@@ -2,9 +2,15 @@ using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
+/// <summary>
+/// Represents a SearchTests.
+/// </summary>
 [Collection("Dependency Injection")]
 public class SearchTests(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
 {
+	/// <summary>
+	/// Executes Search_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task Search_Succeeds()
 	{
@@ -18,3 +24,4 @@ public class SearchTests(ITestOutputHelper testOutputHelper, Fixture fixture) : 
 		result.Links.Should().NotBeNull();
 	}
 }
+

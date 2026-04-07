@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace XWiki.Api;
 
@@ -11,7 +11,6 @@ public class XWikiClientOptions
 {
 	/// <summary>
 	/// Gets the URI of the XWiki instance.
-	/// </summary>
 	/// </summary>
 	public required Uri Uri { get; init; }
 

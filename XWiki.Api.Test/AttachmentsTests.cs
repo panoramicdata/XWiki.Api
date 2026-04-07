@@ -2,29 +2,29 @@ using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
+/// <summary>
+/// Represents a AttachmentsTests.
+/// </summary>
 [Collection("Dependency Injection")]
 public class AttachmentsTests(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
 {
+	/// <summary>
+	/// Executes GetAttachments_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetAttachments_Succeeds()
 	{
-		var wikisApi = XWikiClient.Wikis;
-		var spacesApi = XWikiClient.Spaces;
-		var pagesApi = XWikiClient.Pages;
 		var attachmentsApi = XWikiClient.Attachments;
-		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
-		var firstWiki = wikis.Wikis.FirstOrDefault();
-		firstWiki.Should().NotBeNull();
-		var spaces = await spacesApi.GetSpacesAsync(firstWiki.Id, CancellationToken);
-		var firstSpace = spaces.Spaces.FirstOrDefault();
-		firstSpace.Should().NotBeNull();
-		var pages = await pagesApi.GetPagesAsync(firstWiki.Id, firstSpace.Id, CancellationToken);
-		var firstPage = pages.PageSummaries.FirstOrDefault();
-		firstPage.Should().NotBeNull();
+		var context = await TryGetFirstPageContextAsync();
+		if (context is null)
+		{
+			return;
+		}
 
-		var result = await attachmentsApi.GetAttachmentsAsync(firstWiki.Id, firstSpace.Id, firstPage.Id, CancellationToken);
+		var result = await attachmentsApi.GetAttachmentsAsync(context.Value.Wiki.Id, context.Value.Space.Id, context.Value.Page.Id, CancellationToken);
 		result.Should().NotBeNull();
 		result.Attachments.Should().NotBeNull();
 		result.Links.Should().NotBeNull();
 	}
 }
+

@@ -7,6 +7,9 @@ internal sealed class LoggingHttpClientHandler : HttpClientHandler
 {
 	private readonly ILogger _logger;
 
+	/// <summary>
+	/// Initializes a new instance.
+	/// </summary>
 	public LoggingHttpClientHandler(XWikiClientOptions xWikiClientOptions)
 	{
 		ArgumentNullException.ThrowIfNull(xWikiClientOptions, nameof(xWikiClientOptions));
@@ -20,6 +23,9 @@ internal sealed class LoggingHttpClientHandler : HttpClientHandler
 		}
 	}
 
+	/// <summary>
+	/// Executes SendAsync.
+	/// </summary>
 	protected override async Task<HttpResponseMessage> SendAsync(
 		HttpRequestMessage request,
 		CancellationToken cancellationToken)

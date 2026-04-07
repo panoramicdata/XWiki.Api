@@ -3,6 +3,9 @@ using XWiki.Api.Models;
 
 namespace XWiki.Api.Interfaces;
 
+/// <summary>
+/// Represents a IPages.
+/// </summary>
 public interface IPages
 {
 	/// <summary>

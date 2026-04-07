@@ -6,10 +6,16 @@ using Xunit.Microsoft.DependencyInjection.Abstracts;
 
 namespace XWiki.Api.Test;
 
+/// <summary>
+/// Represents a Fixture.
+/// </summary>
 public class Fixture : TestBedFixture
 {
 	private IConfigurationRoot? _configuration;
 
+	/// <summary>
+	/// Executes AddServices.
+	/// </summary>
 	protected override void AddServices(
 		IServiceCollection services,
 		IConfiguration? configuration)
@@ -28,9 +34,15 @@ public class Fixture : TestBedFixture
 			.AddDebug());
 	}
 
+	/// <summary>
+	/// Executes DisposeAsyncCore.
+	/// </summary>
 	protected override ValueTask DisposeAsyncCore()
 		=> default;
 
+	/// <summary>
+	/// Executes GetTestAppSettings.
+	/// </summary>
 	protected override IEnumerable<TestAppSettings> GetTestAppSettings()
 	{
 		_configuration = new ConfigurationBuilder()

@@ -2,9 +2,15 @@ using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
+/// <summary>
+/// Represents a ClassesTests.
+/// </summary>
 [Collection("Dependency Injection")]
 public class ClassesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
 {
+	/// <summary>
+	/// Executes GetClasses_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetClasses_Succeeds()
 	{
@@ -20,3 +26,4 @@ public class ClassesTests(ITestOutputHelper testOutputHelper, Fixture fixture) :
 		result.Links.Should().NotBeNull();
 	}
 }
+

@@ -1,4 +1,4 @@
-﻿using Refit;
+using Refit;
 using System.Net.Http.Headers;
 using System.Text;
 using XWiki.Api.Interfaces;
@@ -13,6 +13,9 @@ public class XWikiClient : IDisposable
 	private bool disposedValue;
 	private readonly HttpClient _httpClient;
 
+	/// <summary>
+	/// Initializes a new instance.
+	/// </summary>
 	public XWikiClient(XWikiClientOptions xWikiClientOptions)
 	{
 		ArgumentNullException.ThrowIfNull(xWikiClientOptions, nameof(xWikiClientOptions));
@@ -60,20 +63,59 @@ public class XWikiClient : IDisposable
 		Search = RestService.For<ISearch>(_httpClient, refitSettings);
 	}
 
+	/// <summary>
+	/// Gets ServerInfo.
+	/// </summary>
 	public IVersion ServerInfo { get; init; }
 
+	/// <summary>
+	/// Gets Wikis.
+	/// </summary>
 	public IWikis Wikis { get; }
+	/// <summary>
+	/// Gets Spaces.
+	/// </summary>
 	public ISpaces Spaces { get; }
+	/// <summary>
+	/// Gets Pages.
+	/// </summary>
 	public IPages Pages { get; }
+	/// <summary>
+	/// Gets Attachments.
+	/// </summary>
 	public IAttachments Attachments { get; }
+	/// <summary>
+	/// Gets Objects.
+	/// </summary>
 	public IObjects Objects { get; }
+	/// <summary>
+	/// Gets Classes.
+	/// </summary>
 	public IClasses Classes { get; }
+	/// <summary>
+	/// Gets Comments.
+	/// </summary>
 	public IComments Comments { get; }
+	/// <summary>
+	/// Gets Tags.
+	/// </summary>
 	public ITags Tags { get; }
+	/// <summary>
+	/// Gets History.
+	/// </summary>
 	public IHistory History { get; }
+	/// <summary>
+	/// Gets Rendering.
+	/// </summary>
 	public IRendering Rendering { get; }
+	/// <summary>
+	/// Gets Search.
+	/// </summary>
 	public ISearch Search { get; }
 
+	/// <summary>
+	/// Executes Dispose.
+	/// </summary>
 	protected virtual void Dispose(bool disposing)
 	{
 		if (!disposedValue)
@@ -89,6 +131,9 @@ public class XWikiClient : IDisposable
 		}
 	}
 
+	/// <summary>
+	/// Executes Dispose.
+	/// </summary>
 	public void Dispose()
 	{
 		// Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method

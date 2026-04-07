@@ -3,9 +3,15 @@ using XWiki.Api.Models;
 
 namespace XWiki.Api.Test;
 
+/// <summary>
+/// Represents a PagesTests.
+/// </summary>
 [Collection("Dependency Injection")]
 public class PagesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
 {
+	/// <summary>
+	/// Executes GetPages_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetPages_Succeeds()
 	{
@@ -25,6 +31,9 @@ public class PagesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 		result.Links.Should().NotBeNull();
 	}
 
+	/// <summary>
+	/// Executes GetPage_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetPage_Succeeds()
 	{
@@ -69,3 +78,4 @@ public class PagesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 		page.Id.Should().Be(firstPage.Id);
 	}
 }
+

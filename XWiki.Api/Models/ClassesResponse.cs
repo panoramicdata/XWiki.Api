@@ -1,7 +1,16 @@
 namespace XWiki.Api.Models;
 
+/// <summary>
+/// Represents a ClassesResponse.
+/// </summary>
 public class ClassesResponse
 {
-	public required XWikiClass[] Classes { get; init; }
-	public required Link[] Links { get; init; }
+	/// <summary>
+	/// Gets Classes.
+	/// </summary>
+	public XWikiClass[] Classes { get; init; } = [];
+	/// <summary>
+	/// Gets Links.
+	/// </summary>
+	public Link[] Links { get; init; } = [];
 }

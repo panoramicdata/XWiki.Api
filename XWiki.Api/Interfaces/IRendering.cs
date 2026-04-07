@@ -3,6 +3,9 @@ using XWiki.Api.Models;
 
 namespace XWiki.Api.Interfaces;
 
+/// <summary>
+/// Represents a IRendering.
+/// </summary>
 public interface IRendering
 {
 	/// <summary>

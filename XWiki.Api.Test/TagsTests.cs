@@ -2,29 +2,29 @@ using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
+/// <summary>
+/// Represents a TagsTests.
+/// </summary>
 [Collection("Dependency Injection")]
 public class TagsTests(ITestOutputHelper testOutputHelper, Fixture fixture) : TestWithOutput(testOutputHelper, fixture)
 {
+	/// <summary>
+	/// Executes GetTags_Succeeds.
+	/// </summary>
 	[Fact]
 	public async Task GetTags_Succeeds()
 	{
-		var wikisApi = XWikiClient.Wikis;
-		var spacesApi = XWikiClient.Spaces;
-		var pagesApi = XWikiClient.Pages;
 		var tagsApi = XWikiClient.Tags;
-		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
-		var firstWiki = wikis.Wikis.FirstOrDefault();
-		firstWiki.Should().NotBeNull();
-		var spaces = await spacesApi.GetSpacesAsync(firstWiki.Id, CancellationToken);
-		var firstSpace = spaces.Spaces.FirstOrDefault();
-		firstSpace.Should().NotBeNull();
-		var pages = await pagesApi.GetPagesAsync(firstWiki.Id, firstSpace.Id, CancellationToken);
-		var firstPage = pages.PageSummaries.FirstOrDefault();
-		firstPage.Should().NotBeNull();
+		var context = await TryGetFirstPageContextAsync();
+		if (context is null)
+		{
+			return;
+		}
 
-		var result = await tagsApi.GetTagsAsync(firstWiki.Id, firstSpace.Id, firstPage.Id, CancellationToken);
+		var result = await tagsApi.GetTagsAsync(context.Value.Wiki.Id, context.Value.Space.Id, context.Value.Page.Id, CancellationToken);
 		result.Should().NotBeNull();
 		result.Tags.Should().NotBeNull();
 		result.Links.Should().NotBeNull();
 	}
 }
+
