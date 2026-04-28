@@ -7,7 +7,7 @@
     <!-- Shared -->
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.9.50" />
     <!-- XWiki.Api -->
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.6" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.7" />
     <PackageVersion Include="Refit" Version="10.1.6" />
     <!-- XWiki.Api.Test -->
     <PackageVersion Include="AwesomeAssertions" Version="9.4.0" />
