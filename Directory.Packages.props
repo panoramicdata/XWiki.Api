@@ -8,7 +8,7 @@
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.9.50" />
     <!-- XWiki.Api -->
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
-    <PackageVersion Include="Refit" Version="11.0.1" />
+    <PackageVersion Include="Refit" Version="12.1.0" />
     <!-- XWiki.Api.Test -->
     <PackageVersion Include="AwesomeAssertions" Version="9.4.0" />
     <PackageVersion Include="FluentAssertions.Analyzers" Version="0.34.1" />
