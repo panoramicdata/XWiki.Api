@@ -1,4 +1,4 @@
-using AwesomeAssertions;
+﻿using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
@@ -14,13 +14,9 @@ public class SpacesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : 
 	[Fact]
 	public async Task GetSpaces_Succeeds()
 	{
-		var wikisApi = XWikiClient.Wikis;
-		var spacesApi = XWikiClient.Spaces;
-		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
-		var firstWiki = wikis.Wikis.FirstOrDefault();
-		firstWiki.Should().NotBeNull();
+		var firstWiki = await GetFirstWikiAsync();
 
-		var result = await spacesApi.GetSpacesAsync(firstWiki.Id, CancellationToken);
+		var result = await XWikiClient.Spaces.GetSpacesAsync(firstWiki.Id, CancellationToken);
 		result.Should().NotBeNull();
 		result.Spaces.Should().NotBeNull();
 		result.Links.Should().NotBeNull();
@@ -32,16 +28,9 @@ public class SpacesTests(ITestOutputHelper testOutputHelper, Fixture fixture) : 
 	[Fact]
 	public async Task GetSpace_Succeeds()
 	{
-		var wikisApi = XWikiClient.Wikis;
-		var spacesApi = XWikiClient.Spaces;
-		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
-		var firstWiki = wikis.Wikis.FirstOrDefault();
-		firstWiki.Should().NotBeNull();
-		var spaces = await spacesApi.GetSpacesAsync(firstWiki.Id, CancellationToken);
-		var firstSpace = spaces.Spaces.FirstOrDefault();
-		firstSpace.Should().NotBeNull();
+		var (firstWiki, firstSpace) = await GetFirstWikiAndSpaceAsync();
 
-		var space = await spacesApi.GetSpaceAsync(firstWiki.Id, firstSpace.Id, CancellationToken);
+		var space = await XWikiClient.Spaces.GetSpaceAsync(firstWiki.Id, firstSpace.Id, CancellationToken);
 		space.Should().NotBeNull();
 	}
 }

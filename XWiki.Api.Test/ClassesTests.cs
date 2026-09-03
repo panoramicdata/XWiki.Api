@@ -1,4 +1,4 @@
-using AwesomeAssertions;
+﻿using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
@@ -14,13 +14,9 @@ public class ClassesTests(ITestOutputHelper testOutputHelper, Fixture fixture) :
 	[Fact]
 	public async Task GetClasses_Succeeds()
 	{
-		var wikisApi = XWikiClient.Wikis;
-		var classesApi = XWikiClient.Classes;
-		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
-		var firstWiki = wikis.Wikis.FirstOrDefault();
-		firstWiki.Should().NotBeNull();
+		var firstWiki = await GetFirstWikiAsync();
 
-		var result = await classesApi.GetClassesAsync(firstWiki.Id, CancellationToken);
+		var result = await XWikiClient.Classes.GetClassesAsync(firstWiki.Id, CancellationToken);
 		result.Should().NotBeNull();
 		result.Classes.Should().NotBeNull();
 		result.Links.Should().NotBeNull();

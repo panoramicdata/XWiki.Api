@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Xunit.Microsoft.DependencyInjection;
@@ -38,7 +38,7 @@ public class Fixture : TestBedFixture
 	/// Executes DisposeAsyncCore.
 	/// </summary>
 	protected override ValueTask DisposeAsyncCore()
-		=> default;
+		=> base.DisposeAsyncCore();
 
 	/// <summary>
 	/// Executes GetTestAppSettings.

@@ -1,4 +1,5 @@
-
+﻿
+using AwesomeAssertions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using XWiki.Api.Models;
@@ -55,6 +56,29 @@ public abstract class TestWithOutput : TestBed<Fixture>
 			Password = TestConfig.Password,
 			Logger = Logger
 		});
+	}
+
+	/// <summary>
+	/// Gets the first wiki, failing the test if the server reports none.
+	/// </summary>
+	private protected async Task<Wiki> GetFirstWikiAsync()
+	{
+		var wikis = await XWikiClient.Wikis.GetWikisAsync(CancellationToken);
+		var wiki = wikis.Wikis.FirstOrDefault();
+		wiki.Should().NotBeNull();
+		return wiki;
+	}
+
+	/// <summary>
+	/// Gets the first wiki and its first space, failing the test if either is absent.
+	/// </summary>
+	private protected async Task<(Wiki Wiki, Space Space)> GetFirstWikiAndSpaceAsync()
+	{
+		var wiki = await GetFirstWikiAsync();
+		var spaces = await XWikiClient.Spaces.GetSpacesAsync(wiki.Id, CancellationToken);
+		var space = spaces.Spaces.FirstOrDefault();
+		space.Should().NotBeNull();
+		return (wiki, space);
 	}
 
 	private protected async Task<(Wiki Wiki, Space Space, PageSummary Page)?> TryGetFirstPageContextAsync()

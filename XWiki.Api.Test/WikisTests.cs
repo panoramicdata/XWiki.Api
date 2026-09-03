@@ -1,4 +1,4 @@
-using AwesomeAssertions;
+﻿using AwesomeAssertions;
 
 namespace XWiki.Api.Test;
 
@@ -28,12 +28,9 @@ public class WikisTests(ITestOutputHelper testOutputHelper, Fixture fixture) : T
 	[Fact]
 	public async Task GetWiki_Succeeds()
 	{
-		var wikisApi = XWikiClient.Wikis;
-		var wikis = await wikisApi.GetWikisAsync(CancellationToken);
-		var firstWiki = wikis.Wikis.FirstOrDefault();
-		firstWiki.Should().NotBeNull();
+		var firstWiki = await GetFirstWikiAsync();
 
-		var wiki = await wikisApi.GetWikiAsync(firstWiki.Id, CancellationToken);
+		var wiki = await XWikiClient.Wikis.GetWikiAsync(firstWiki.Id, CancellationToken);
 		wiki.Should().NotBeNull();
 		wiki.Id.Should().Be(firstWiki.Id);
 	}
