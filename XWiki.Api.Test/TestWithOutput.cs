@@ -11,6 +11,7 @@ namespace XWiki.Api.Test;
 /// Represents this member.
 /// </summary>
 [CollectionDefinition("Dependency Injection")]
+[Trait("Category", "Integration")]
 public abstract class TestWithOutput : TestBed<Fixture>
 {
 	/// <summary>
